@@ -9,7 +9,6 @@ type AllContextType = {
 
 const AllContext = createContext<AllContextType | undefined>(undefined);
 
-
 export const AllProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {

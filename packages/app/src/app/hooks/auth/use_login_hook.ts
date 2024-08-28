@@ -2,6 +2,8 @@
 import { useState } from "react";
 
 import axios, { AxiosResponse } from "axios";
+import { useAll } from "@app/src/app/context/all_context";
+
 enum REQUEST_PORT {
   __LOGIN_PORT = "http://localhost:3001/auth/login",
   __NEXT_SERVER_PORT = "http://localhost:3000",
@@ -18,15 +20,6 @@ export interface Player {
   id: string;
   password: string;
 }
-
-/**
- * * Function : useLoginHooks
- * 작성자 : @jaemin1005 / 2024-07-?
- * 편집자 : @naviadev / 2024-07-28
- * Issue : WIB-27
- * @function useLoginHooks
- * @description
- */
 
 const LoginAxios = async (user: Player): Promise<boolean> => {
   try {
@@ -51,7 +44,7 @@ const LoginAxios = async (user: Player): Promise<boolean> => {
 const useLoginHooks = () => {
   const [id, setId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const { getToken, setGetToken } = useAll();
 
   const handleLogin = async (): Promise<boolean> => {
     //* 공백이 있으면 안됨
@@ -64,8 +57,8 @@ const useLoginHooks = () => {
     }
     const success = await LoginAxios({ id: id, password: password });
     if (success) {
-      setIsLoggedIn(true);
-      // router.push(ROUTE_PATH.__LETTER_VIEW);
+      //로그인 성공시 getToken상태 true로 전환
+      setGetToken(true);
       return true;
     } else {
       console.error("로그인 실패");
@@ -76,7 +69,6 @@ const useLoginHooks = () => {
   return {
     id,
     password,
-    isLoggedIn,
     setId,
     setPassword,
     handleLogin,

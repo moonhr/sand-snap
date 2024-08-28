@@ -1,11 +1,11 @@
 import React from "react";
 
-// import useRegisterHooks from "../../hooks/auth_view/use_register_hooks";
+import useRegisterHooks from "@app/src/app/hooks/auth/use_register_hooks";
 import { useMinimap } from "@app/src/app/(organism)/minimap/context/minimap_context";
 
 const RegisterForm = () => {
-  // const { setId, setPassword, setPasswordCheck, handleRegister } =
-  //   useRegisterHooks();
+  const { setId, setPassword, setPasswordCheck, handleRegister } =
+    useRegisterHooks();
   const { isLogin, setIsLogin } = useMinimap();
 
   //로그인으로 전환
