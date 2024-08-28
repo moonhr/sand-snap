@@ -4,9 +4,9 @@ import React from "react";
 
 import { useMinimap } from "./context/minimap_context";
 import { useAll } from "../../context/all_context";
-import LoginForm from "@app/src/components/minimap/login_form";
-import RegisterForm from "@app/src/components/minimap/register_form";
-import MyForm from "@app/src/components/minimap/my_form";
+import LoginForm from "@app/src/components/minimap/login/login_form";
+import RegisterForm from "@app/src/components/minimap/register/register_form";
+import MyForm from "@app/src/components/minimap/user/my_form";
 
 const Minimap: React.FC = () => {
   const { isLogin, setIsLogin } = useMinimap();

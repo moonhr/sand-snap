@@ -1,6 +1,11 @@
 import React from "react";
 import { useView } from "../../../app/(organism)/view/context/view.context";
 
+/**
+ * * 편지가 도착하면 활성화되는 버튼
+ * * 버튼을 누르면 편지가 보여지며 버튼이 다시 비활성화됨
+ * @returns Button
+ */
 export const ReceivedLetterButton = () => {
   const { onLetterView, setOnLetterView, receivedLetter, setReceivedLetter } =
     useView();

@@ -6,6 +6,8 @@ type ViewContextType = {
   setOnLetterView: (value: boolean) => void;
   receivedLetter: boolean;
   setReceivedLetter: (value: boolean) => void;
+  sendLetter: boolean;
+  setSendLetter: (value: boolean) => void;
 };
 
 const ViewContext = createContext<ViewContextType | undefined>(undefined);
@@ -17,6 +19,8 @@ export const ViewProvider: React.FC<{ children: React.ReactNode }> = ({
   const [onLetterView, setOnLetterView] = useState(false);
   //도착한 편지 열람 -> true전환 시 편지 열람창이 활성화.
   const [receivedLetter, setReceivedLetter] = useState(false);
+  //편지작성 -> 작성버튼에 전달됨 flase가 기본. 작성 요청시 true. 편지가 전송되면 다시 flase로 전환.
+  const [sendLetter, setSendLetter] = useState(false);
 
   return (
     <ViewContext.Provider
@@ -25,6 +29,8 @@ export const ViewProvider: React.FC<{ children: React.ReactNode }> = ({
         setOnLetterView,
         receivedLetter,
         setReceivedLetter,
+        sendLetter,
+        setSendLetter,
       }}
     >
       {children}

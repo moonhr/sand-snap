@@ -1,13 +1,18 @@
 import React from "react";
-import { useView } from "../../../app/(organism)/view/context/view.context";
 
-export const ReceivedLetterView = () =>{
-  const { onLetterView, setOnLetterView, receivedLetter, setReceivedLetter } =
-    useView();
+type ReceivedLetterViewPropType = {
+  letterMessage: string;
+  className?: string;
+};
 
-  return (
-    <div>
-      
-    </div>
-  )
-}
+/**
+ * * 도착한 편지가 나타나는 뷰 컴포넌트
+ * @param 소켓으로 도착한 메세지
+ * @returns 
+ */
+export const ReceivedLetterView: React.FC<ReceivedLetterViewPropType> = ({
+  letterMessage,
+  className,
+}) => {
+  return <div className={className}>{letterMessage}</div>;
+};
